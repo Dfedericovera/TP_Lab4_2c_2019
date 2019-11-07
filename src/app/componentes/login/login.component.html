@@ -1,72 +1,8 @@
-<!--
-<div style="margin: 20% auto; width: 30%;">
-  <div class="row">
-    <div class="col-lg-6">
-      Usuario
-    </div>
-    <div class="col-lg-6">
-      <input type="text"  [(ngModel)]="usuario">
-    </div>
-  </div>
-  <div class="row" style="margin-top: 5px">
-    <div class="col-lg-6">
-      Clave
-    </div>
-    <div class="col-lg-6">
-      <input type="password" [(ngModel)]="clave">
-    </div>
-  </div>
-  <div class="row" style="text-align: center; margin-top: 10px">
-    <div class="col-lg-12">
-      <button (click)="Entrar()" class="btn btn-info btn-lg" >Entrar</button>
-    </div>
-  </div>
-</div>
--->
-<!-- 
- <div class="container" >
-  <div class="jumbotron" style="padding:50px;">
-    <form action="return true;">
-      <div class="imgcontainer">
-        <img src="./assets/imagenes/login.png" alt="Avatar" class="avatar" max-width="104" >
-      </div>
-
-      <div class="container">
-        <label><b>Usuario</b></label>
-        <input type="text" placeholder="Usuario"  [(ngModel)]="usuario"  name="uname" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Clave"  [(ngModel)]="clave" name="psw" required>
-            
-        <button *ngIf="logeando"  (click)="MoverBarraDeProgreso()" >Ingresar</button>
-       
-        <div *ngIf="!logeando" class="progress">
-            <div class="progress-bar progress-bar-info progress-bar-striped active" [class]="clase" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" [style.width]="ProgresoDeAncho" >
-              {{progresoMensaje}} - {{progreso}}%
-            </div>
-        </div>
-       
-        <input type="checkbox" checked="checked"> Recordar mis datos
-      </div>
-
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" class="cancelbtn">Cancelar</button>
-        <button type="button" class="aceptbtn" routerLink="/Registro" >Registrarse</button>
-        <span class="psw">Te olvidaste <a href="#">la clave?</a></span>
-      </div>
-     
-    </form>
-  </div>
-</div>
--->
-
-
-
-<!-- nuevo -->
+<div class="background">
 <div class="container">
   <div class="card card-login mx-auto text-center bg-dark">
     <div class="card-header mx-auto bg-dark">
-      <span> <img src="./assets/imagenes/ingresar.png" class="w-75" alt="Logo"> </span><br />
+      <span style="font-size:xx-large;"> <!-- <img src="./assets/imagenes/sonrisa.jpg" class="w-75" alt="Logo"> --> 𝔏𝔞 𝔠𝔬𝔪𝔞𝔫𝔡𝔞</span><br />
     </div>
     <div class="card-body">
       <form [formGroup]="signin"  class="form-horizontal">
@@ -142,6 +78,6 @@
       <span class="psw">Te olvidaste <a href="javascript:void(0)">la clave?</a></span>
     </div>
   </div>
-
+</div>
   <!-- <p style="background-color: rgb(255, 255, 255);">
   Form Status: {{ signin.status }} -->

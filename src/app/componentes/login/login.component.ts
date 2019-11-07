@@ -59,8 +59,10 @@ export class LoginComponent implements OnInit {
   // Confirma el capcha y procede con el login
   onSubmit(recapchaResponse) {
     /* console.log(recapchaResponse['success']); */
-    this.jugador.correo = this.signin.get("correo").value;
-    this.jugador.clave = this.signin.get("clave").value;
+    console.log(this.correo.value);
+    console.log(this.clave.value);
+    this.jugador.correo = this.correo.value;
+    this.jugador.clave = this.clave.value;
     this.jugadoresService.login("/usuario/login", this.jugador)
       .then(data => {
         if (data != null && recapchaResponse['success'] == true) {

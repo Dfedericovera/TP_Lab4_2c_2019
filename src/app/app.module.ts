@@ -10,6 +10,8 @@ import { MiHttpService } from './servicios/mi-http/mi-http.service';
 import { JugadoresService } from './servicios/jugadores.service';
 import { ArchivosJugadoresService } from './servicios/archivos-jugadores.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaLoaderService, RecaptchaComponent } from 'ng-recaptcha';
+const globalSettings: RecaptchaSettings = {siteKey:'6LedkbkUAAAAANj1mPFBIJr53_pOgUcbjbshQ5Sv'}
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,12 +23,18 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RecaptchaModule.forRoot(),
 
   ],
   providers: [
     MiHttpService,
     JugadoresService,
-    ArchivosJugadoresService
+    ArchivosJugadoresService,
+    RecaptchaComponent,
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: globalSettings,
+    }
   ],
   bootstrap: [AppComponent]
 })
