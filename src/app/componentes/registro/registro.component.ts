@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Usuario } from '../../clases/usuario';
 import { JugadoresService } from '../../servicios/jugadores.service';
+import { FormGroup } from '@angular/forms';
 // para poder hacer las validaciones
 // import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
@@ -10,6 +11,7 @@ import { JugadoresService } from '../../servicios/jugadores.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+  uploadForm: FormGroup;
 
   /* constructor( private miConstructor:FormBuilder) { }
    email=new FormControl('',[Validators.email]);
@@ -50,6 +52,13 @@ export class RegistroComponent implements OnInit {
     });
 
 
+  }
+  onFileSelect(event) {
+    console.log(event.target.files[0]);
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('profile').setValue(file);
+    }
   }
 
 
