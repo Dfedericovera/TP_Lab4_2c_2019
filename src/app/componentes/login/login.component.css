@@ -163,7 +163,7 @@ span.psw {
 
 /* .background {
     background-image: url(../../../assets/imagenes/login.jpg);
-    height: 100%; 
+    height: 100%;
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
@@ -172,17 +172,3 @@ span.psw {
         height: 100%;
         margin: 0;
     } */
-    .background {
-        /* The image used */
-        background-image: url(../../../assets/imagenes/login.jpg);
-        /* Full height */
-        height: 100%; 
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: repeat;
-        background-size: cover;
-        }
-        .background {
-            height: 100%;
-            margin: 0;
-        }
