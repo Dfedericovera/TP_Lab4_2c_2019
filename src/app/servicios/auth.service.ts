@@ -7,11 +7,9 @@ import { Router } from '@angular/router';
 export class AutService {
 
   public name: string;
-  private _token: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
   constructor( private router: Router ) {
-    this._token = localStorage.getItem('token');
   }
 
   public isLogued()
@@ -40,8 +38,8 @@ export class AutService {
   {
 
     try {
-      console.log('getExpirationDate', this.jwtHelper.getTokenExpirationDate(this._token))
-      return this.jwtHelper.getTokenExpirationDate(this._token);
+      console.log('getExpirationDate', this.jwtHelper.getTokenExpirationDate(localStorage.getItem("token")))
+      return this.jwtHelper.getTokenExpirationDate(localStorage.getItem("token"));
     } catch (error) {
       return null;
     }
@@ -60,14 +58,14 @@ export class AutService {
   public getNivel ()
   {
     // console.log(this.jwtHelper.decodeToken(this._token));
-    if (this.jwtHelper.decodeToken(this._token).nivel || this.jwtHelper.decodeToken(this._token).nivel === 0)
-      return this.jwtHelper.decodeToken(this._token).nivel;
+    if (this.jwtHelper.decodeToken(localStorage.getItem("token")).nivel || this.jwtHelper.decodeToken(localStorage.getItem("token")).nivel === 0)
+      return this.jwtHelper.decodeToken(localStorage.getItem("token")).nivel;
     else
       return 1000;
 
   }
   public getPerfil (){
-    return this.jwtHelper.decodeToken(this._token).tipo;
+    return this.jwtHelper.decodeToken(localStorage.getItem("token")).tipo;
 
   }
 }

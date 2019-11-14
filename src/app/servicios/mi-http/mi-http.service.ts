@@ -28,8 +28,8 @@ export class MiHttpService {
   public httpPostP(url: string, objeto: any) {
     /* console.log("ENVIANDO"); */
     let headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'token': localStorage.getItem('token')
+      'Content-Type': 'application/x-www-form-urlencoded'/* ,
+      'token': localStorage.getItem('token') */
     });
     let options = {
       headers: headers
