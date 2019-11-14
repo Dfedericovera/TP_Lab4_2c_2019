@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient} from '@angular/common/http';
-
+import { AutService } from "../auth.service";
 
 @Injectable()
 export class MiHttpService {
@@ -20,16 +20,22 @@ export class MiHttpService {
       .catch(this.handleError);
   }
 
+  
+  public postFormData(url:string, obj:any){
+    return this.httpClient.post(url,obj)
+  }
+
   public httpPostP(url: string, objeto: any) {
     /* console.log("ENVIANDO"); */
     let headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'token': localStorage.getItem('token')
     });
     let options = {
       headers: headers
     }
     /* console.log(JSON.stringify(objeto)); */
-    return this.httpClient.post(url,JSON.stringify(objeto),options)
+    return this.httpClient.post(url,objeto,options)
     /* { "correo": "admin", "clave": "admin" },.subscribe(data => {
       console.log(data);
     });*/

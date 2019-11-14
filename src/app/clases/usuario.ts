@@ -1,11 +1,11 @@
 export class Usuario {
-  public correo: string;
+  public usuario: string;
   public clave: string;
   public alias: string;
 
   constructor(correo?: string, clave?: string, AliasJugador?: string) {
       if (correo) {
-          this.correo = correo;
+          this.usuario = correo;
       }
       if (clave) {
           this.clave = clave;

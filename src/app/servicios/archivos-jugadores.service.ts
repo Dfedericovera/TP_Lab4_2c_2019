@@ -4,8 +4,8 @@ import { MiHttpService } from './mi-http/mi-http.service';
 @Injectable()
 export class ArchivosJugadoresService {
 
-  /* api = "http://localhost/Apache/PHP/TPSALADEJUEGOS"; */
-  api =  "https://dfedericovera.000webhostapp.com"  ;
+  api = "http://localhost/APACHE/PHP/LaComandaAPI";
+  /* api =  "https://dfedericovera.000webhostapp.com"  ; */
   peticion: any;
   constructor(public miHttp: MiHttpService) {
 

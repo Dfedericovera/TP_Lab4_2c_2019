@@ -10,7 +10,7 @@
           <div >
             <span class="input-group-text" style="background-color: rgba(0, 0, 0, 0); border: none;"><i class="fas fa-user"></i></span>
           </div>
-          <input name="correo" class="form-control" formControlName="correo" type="email"
+          <input name="correo" class="form-control" formControlName="correo" type="text"
             placeholder="Correo electronico" required >
           <div *ngIf="correo.invalid && (correo.dirty || correo.touched)" class="alert alert-danger">
 
@@ -19,9 +19,6 @@
             </div>
             <div *ngIf="correo.errors.minlength">
               El correo debe tener al menos 6 caracteres.
-            </div>
-            <div *ngIf="correo.errors.email">
-              Debe ser una direccion de correo valida.
             </div>
           </div>
         </div>

@@ -16,7 +16,10 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaLoaderS
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 const globalSettings: RecaptchaSettings = {siteKey:'6LedkbkUAAAAANj1mPFBIJr53_pOgUcbjbshQ5Sv'};
-
+import { VerificarJWTService } from "./servicios/verificar-jwtservice.service";
+import { AutService } from "./servicios/auth.service";
+import { MozoComponent } from './componentes/mozo/mozo.component';
+import { ActualizarFotoComponent } from './componentes/actualizar-foto/actualizar-foto.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,8 @@ const globalSettings: RecaptchaSettings = {siteKey:'6LedkbkUAAAAANj1mPFBIJr53_pO
     RegistroComponent,
     PrincipalComponent,
     CabeceraComponent,
+    MozoComponent,
+    ActualizarFotoComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,8 @@ const globalSettings: RecaptchaSettings = {siteKey:'6LedkbkUAAAAANj1mPFBIJr53_pO
     JugadoresService,
     ArchivosJugadoresService,
     RecaptchaComponent,
+    VerificarJWTService,
+    AutService,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: globalSettings,

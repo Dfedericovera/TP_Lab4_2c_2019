@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
   private elementRef: ElementRef;
-  jugador: Usuario;
+  usuario: Usuario;
   progreso: number;
   progresoMensaje = 'esperando...';
   logeando = true;
@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
   signin = new FormGroup({
     correo: new FormControl('', [
       Validators.required,
-      Validators.minLength(6),
-      Validators.email
+      Validators.minLength(6)
     ]),
     clave: new FormControl('', Validators.required),
 
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.jugador = new Usuario("","","");
+    this.usuario = new Usuario("","","");
     RecaptchaComponent.prototype.ngOnDestroy = function () {
       if (this.subscription) {
         this.subscription.unsubscribe();
@@ -63,9 +62,9 @@ export class LoginComponent implements OnInit {
     /* console.log(recapchaResponse['success']); */
     console.log(this.correo.value);
     console.log(this.clave.value);
-    this.jugador.correo = this.correo.value;
-    this.jugador.clave = this.clave.value;
-    this.jugadoresService.login("/usuario/login", this.jugador)
+    this.usuario.usuario = this.correo.value;
+    this.usuario.clave = this.clave.value;
+    this.jugadoresService.login("/empleados/login", this.usuario)
       .then(data => {
         if (data != null && recapchaResponse['success'] == true) {
           this.router.navigate(['']);
@@ -105,9 +104,9 @@ export class LoginComponent implements OnInit {
 /*
   MoverBarraDeProgreso() {
     console.info(this.usuarios.listar());
-    console.info(this.jugador.correo);
-    console.info(this.jugador.clave);
-    console.info(this.jugador.alias);
+    console.info(this.usuario.correo);
+    console.info(this.usuario.clave);
+    console.info(this.usuario.alias);
     this.logeando = false;
     this.clase = "progress-bar progress-bar-danger progress-bar-striped active";
     this.progresoMensaje = "NSA spy...";

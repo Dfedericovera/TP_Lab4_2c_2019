@@ -19,14 +19,18 @@ export class VerificarJWTService implements CanActivate {
         console.log(route);
         console.log(state); */
 
-        if ( this.auth.isLogued() )
+        if ( this.auth.isLogued())
         {
-
-          return true;
+          if(this.auth.getPerfil() == 'Socio' ){
+            return true;
+          }
+          this.router.navigate(['/Registro']);
+          return !true;
+          
         }
         else
         {
-          this.router.navigate(['/error']);
+          this.router.navigate(['/Registro']);
           // this.router.navigate(['/pages/forms/inputs']);
           return !true;
         }
