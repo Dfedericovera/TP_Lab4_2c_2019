@@ -20,7 +20,7 @@ export class MiHttpService {
       .catch(this.handleError);
   }
 
-  
+
   public postFormData(url:string, obj:any){
     return this.httpClient.post(url,obj)
   }
@@ -61,7 +61,7 @@ export class MiHttpService {
   }
 
   public httpGetO(url: string) {
-    return this.http.get(url)
+    return this.http.get(url);
   }
 
 

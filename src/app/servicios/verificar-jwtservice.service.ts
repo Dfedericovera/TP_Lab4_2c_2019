@@ -13,12 +13,12 @@ export class VerificarJWTService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> {
 
-    // 
+    //
     let url: string = state.url;
-    console.log('url dentro de canActivate', url);
+/*     console.log('url dentro de canActivate', url);
     console.log(route);
     console.log(state);
-    console.log(this.auth.getPerfil());
+    console.log(this.auth.getPerfil()); */
 
     if (this.auth.isLogued()) {
       if (this.auth.getPerfil() == 'Socio') {

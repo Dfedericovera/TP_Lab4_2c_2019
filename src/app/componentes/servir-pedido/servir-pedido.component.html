@@ -1,6 +1,6 @@
 <form class="form-inline my-2 my-lg-0" #f="ngForm" (ngSubmit)="onSubmit(f)" enctype="multipart/form-data">
 
-  <input pattern="[0-9 ]*" id="nombre" name="nombre" ngModel required minlength="2" class="form-control mr-sm-2"
+  <input pattern="[0-9a-zA-Z ]*" id="nombre" name="nombre" ngModel required minlength="2" class="form-control mr-sm-2"
       type="text" placeholder="Codigo de la mesa" aria-label="Search" #nombre="ngModel"><!-- #first="ngModel" --><!-- pattern="[a-zA-Z ]*" -->
 
   <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
@@ -47,9 +47,8 @@
           Campo Requerido.
       </div>
   </div> -->
-  <div class="img">
+<!--   <div class="img">
       <label for="foto" class="form-control mr-sm-2">Seleccionar Foto</label>
-      <!-- <image-upload  (uploadFinished)="onUploadFinish($event,f)"></image-upload> -->
           <input id="foto" type="file" required name="foto" ngModel required #file="ngModel"
               accept="image/png, image/jpeg" (change)="onFileSelect($event)" class="form-control mr-sm-2">
       <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
@@ -57,14 +56,14 @@
               Imagen requerida.
           </div>
       </div>
-  </div>
+  </div> -->
 
 
 
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="f.invalid">Registrar</button>
 
   <div class="submitted-message" *ngIf="f.submitted">
-      <p>Has Actualizado la imagen de la Mesa {{ f.value.nombre }}!</p>
+      <p>Has servido el pedido de la Mesa {{ f.value.nombre }}!</p>
       <button (click)="f.resetForm({})">Actualizar otra mesa</button>
   </div>
 
@@ -79,3 +78,4 @@
     </div>
   </form>
 </div> -->
+

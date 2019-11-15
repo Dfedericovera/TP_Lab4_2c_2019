@@ -20,6 +20,8 @@ import { VerificarJWTService } from "./servicios/verificar-jwtservice.service";
 import { AutService } from "./servicios/auth.service";
 import { MozoComponent } from './componentes/mozo/mozo.component';
 import { ActualizarFotoComponent } from './componentes/actualizar-foto/actualizar-foto.component';
+import { CambiarEstadoComponent } from './componentes/cambiar-estado/cambiar-estado.component';
+import { ServirPedidoComponent } from './componentes/servir-pedido/servir-pedido.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,8 @@ import { ActualizarFotoComponent } from './componentes/actualizar-foto/actualiza
     CabeceraComponent,
     MozoComponent,
     ActualizarFotoComponent,
+    CambiarEstadoComponent,
+    ServirPedidoComponent,
   ],
   imports: [
     BrowserModule,
