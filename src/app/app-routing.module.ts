@@ -11,6 +11,7 @@ import { CocineroComponent } from './componentes/cocinero/cocinero.component';
 import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-pedidos.component';
 
 const routes = [
+  { path: 'TP_Lab4_2c_2019',canActivate: [VerificarJWTService],  component: PrincipalComponent},
   { path: '',canActivate: [VerificarJWTService],  component: PrincipalComponent},
   { path: 'Mozo',canActivate: [MozoService],  component: MozoComponent},
   { path: 'Login', component: LoginComponent },

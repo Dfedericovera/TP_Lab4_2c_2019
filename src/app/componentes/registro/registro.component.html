@@ -23,22 +23,31 @@
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
   <form class="modal-content animate" #f="ngForm">
     <div class="container">
-      <label><b>Correo Electronico</b></label>
-      <input [(ngModel)]="jugador.correo" type="text" placeholder="Ingresa tu correo" name="email" required>
+      <label><b>Nombre de usuario</b></label>
+      <input [(ngModel)]="jugador.usuario" type="text" placeholder="Ingresa tu correo" name="email" required>
 
-      <label><b>Alias</b></label>
-      <input [(ngModel)]="jugador.alias" type="text" placeholder="Ingresa tu alias" name="alias" required>
-      <div class="img">
-        <!-- <image-upload  (uploadFinished)="onUploadFinish($event,f)"></image-upload> -->
+      <label><b>Nombre completo</b></label>
+      <input [(ngModel)]="jugador.nombre" type="text" placeholder="Ingresa tu alias" name="alias" required>
+      <label><b>Tipo de empleado</b></label>
+      <select class="form-control mr-sm-2" ngModel name="id_menu" required >
+        <option value="1">Socio</option>
+        <option value="2">Mozo</option>
+        <option value="3">Cocinero</option>
+        <option value="4">Bartender</option>
+        <option value="5">Cervecero</option>
+        <option value="6">CandyBar</option>
+    </select>
+      <!-- <div class="img">
+        
         <label for="foto"><b>Foto:</b>
-            <input id="foto" type="file" required name="foto" ngModel required #file="ngModel"
-                accept="image/png, image/jpeg" (change)="onFileSelect($event)" class="form-control mr-sm-2"></label>
+          <input id="foto" type="file" required name="foto" ngModel required #file="ngModel"
+            accept="image/png, image/jpeg" (change)="onFileSelect($event)" class="form-control mr-sm-2"></label>
         <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
-            <div *ngIf="file.errors.required">
-                Imagen requerida.
-            </div>
+          <div *ngIf="file.errors.required">
+            Imagen requerida.
+          </div>
         </div>
-    </div>
+      </div> -->
 
       <label><b>Clave</b></label>
       <input [(ngModel)]="jugador.clave" type="password" placeholder="Ingresa tu clave" name="psw" required>
