@@ -20,9 +20,17 @@ export class MiHttpService {
       .catch(this.handleError);
   }
 
+  public httpDelete(url){
+    return this.httpClient.delete(url,{
+      headers: new HttpHeaders().set('token', localStorage.getItem('token')),
+    });
+  }
+
 
   public postFormData(url:string, obj:any){
-    return this.httpClient.post(url,obj)
+    return this.httpClient.post(url,obj,{
+      headers: new HttpHeaders().set('token', localStorage.getItem('token')),
+    })
   }
 
   public httpPostP(url: string, objeto: any) {
@@ -61,7 +69,7 @@ export class MiHttpService {
   }
 
   public httpGetO(url: string) {
-    return this.http.get(url);
+    return this.http.get(url,{     headers: new HttpHeaders().set('token', localStorage.getItem('token'))   });
   }
 
 

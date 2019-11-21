@@ -22,6 +22,14 @@ import { MozoComponent } from './componentes/mozo/mozo.component';
 import { ActualizarFotoComponent } from './componentes/actualizar-foto/actualizar-foto.component';
 import { CambiarEstadoComponent } from './componentes/cambiar-estado/cambiar-estado.component';
 import { ServirPedidoComponent } from './componentes/servir-pedido/servir-pedido.component';
+import { RegistrarPedidoComponent } from './componentes/registrar-pedido/registrar-pedido.component';
+import { CancelarPedidoComponent } from './componentes/cancelar-pedido/cancelar-pedido.component';
+import { CocineroComponent } from './componentes/cocinero/cocinero.component';
+import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-pedidos.component';
+import { TomarPedidoComponent } from './componentes/tomar-pedido/tomar-pedido.component';
+import { ListoParaServirComponent } from './componentes/listo-para-servir/listo-para-servir.component';
+import { ServirComponent } from './componentes/servir/servir.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +41,13 @@ import { ServirPedidoComponent } from './componentes/servir-pedido/servir-pedido
     ActualizarFotoComponent,
     CambiarEstadoComponent,
     ServirPedidoComponent,
+    RegistrarPedidoComponent,
+    CancelarPedidoComponent,
+    CocineroComponent,
+    ListadoPedidosComponent,
+    TomarPedidoComponent,
+    ListoParaServirComponent,
+    ServirComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +56,6 @@ import { ServirPedidoComponent } from './componentes/servir-pedido/servir-pedido
     ReactiveFormsModule,
     HttpClientModule,
     RecaptchaModule.forRoot(),
-
   ],
   providers: [
     MiHttpService,

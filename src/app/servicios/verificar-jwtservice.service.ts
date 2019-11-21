@@ -47,6 +47,7 @@ export class VerificarJWTService implements CanActivate {
 
     }
     else {
+      /* ERROR */
       this.router.navigate(['/Registro']);
       return !true;
     }

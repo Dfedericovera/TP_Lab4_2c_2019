@@ -12,7 +12,71 @@ export class EmpleadoService implements CanActivate {
   api = "http://localhost/APACHE/PHP/LaComandaAPI";
   constructor(private miHttp:MiHttpService,private auth: AutService, private router: Router) { }
 
-  Header = "";
+  filtrado:any;
+
+  tomarPedido(ruta, objeto){
+    console.log(this.api + ruta);
+    this.miHttp.postFormData(this.api + ruta, objeto)
+    .toPromise()
+    .then(data => {
+      console.log( data );
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  traertodos(ruta: string, filtro?: string) {
+    return this.miHttp.httpGetO(this.api + ruta).toPromise().then(data => {
+      /* console.info("jugadores service", data); */
+
+      this.filtrado = data;
+
+      if (filtro == "En Preparacion") {        
+        this.filtrado = this.filtrado.filter(
+          data => data.estado == "En Preparacion");
+          /* console.info("jugadores service ganadores", data); */
+        return this.filtrado
+      }
+      else if (filtro == "Pendiente") {
+        this.filtrado = this.filtrado.filter(          
+          data => data.estado == "Pendiente");
+          /* console.info("jugadores service perdedores", data); */
+        return this.filtrado;
+      }
+      else if (filtro == "Listo para Servir") {
+        this.filtrado = this.filtrado.filter(          
+          data => data.estado == "Listo para Servir");
+          /* console.info("jugadores service perdedores", data); */
+        return this.filtrado;
+      }
+      else if (filtro == "Entregado") {
+        this.filtrado = this.filtrado.filter(          
+          data => data.estado == "Entregado");
+          /* console.info("jugadores service perdedores", data); */
+        return this.filtrado;
+      }
+      else if (filtro == "Pedido cancelado") {
+        this.filtrado = this.filtrado.filter(          
+          data => data.estado == "Pedido cancelado");
+          /* console.info("cancelados", data); */
+        return this.filtrado;
+      }
+      else if (filtro == "Pedido finalizado") {
+        this.filtrado = this.filtrado.filter(          
+          data => data.estado == "Pedido finalizado");
+          /* console.info("jugadores service perdedores", data); */
+        return this.filtrado;
+      }
+      console.info("jugadores service todos", data);
+      return this.filtrado
+    }    
+    )
+      .catch(error => {
+        console.log("error", error);
+        return this.filtrado; 
+      });
+  }
+
 
   public actualizarFoto(ruta: string, objeto:any){
     this.miHttp.postFormData(this.api + ruta, objeto)

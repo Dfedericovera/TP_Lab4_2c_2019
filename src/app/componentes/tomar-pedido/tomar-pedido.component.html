@@ -1,0 +1,91 @@
+<button type="button" class="btn btn-info btn-circle"  data-toggle="modal"
+  data-target="#tomarPedidoModal" (click)="mostrarCodigo(f)"><i class="fas fa-utensils"></i>
+</button>
+
+
+<!-- Modal Cancelar pedido -->
+<div class="modal fade" id="tomarPedidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Cancelar Pedido
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form class="form-inline my-2 my-lg-0" #f="ngForm" (ngSubmit)="onSubmit(f)" enctype="multipart/form-data">
+
+            <input pattern="[0-9a-zA-Z]*" id="codigoActual" name="nombre" ngModel required minlength="2" class="form-control mr-sm-2"
+                type="text" placeholder="Codigo de la mesa" aria-label="Search" #nombre="ngModel" ><!-- #first="ngModel" --><!-- pattern="[a-zA-Z ]*" -->
+          
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                <div *ngIf="nombre.errors.required">
+                    Campo Requerido.
+                </div>
+                <div *ngIf="nombre.errors.pattern">
+                    El Codigo solo debe incluir numeros.
+                </div>
+                <div *ngIf="nombre.errors.minlength">
+                    El Codigo debe tener mas de 2 caracteres.
+                </div>
+                <div *ngIf="nombre.errors.forbiddenName">
+                    El Codigo no puede ser Admin.
+                </div>
+            </div>
+          
+            <input required name="minutosEstimados" ngModel required  class="form-control mr-sm-2" type="text"
+                placeholder="Minutos Estimados de preparacion" aria-label="Search" #minutosEstimados="ngModel">
+          
+            <div style="width: 100%;"
+                *ngIf="minutosEstimados.invalid && (minutosEstimados.dirty || minutosEstimados.touched)"
+                class="alert alert-danger">
+                <div *ngIf="minutosEstimados.errors.required">
+                    Campo Requerido.
+                </div>
+            </div>
+          <!--
+            <label for="fecha">Fecha de Estreno <input id="fecha" required name="fecha_de_estreno" ngModel required
+                    class="form-control mr-sm-2" type="date" placeholder="Fecha de Nacimiento" aria-label="Search"
+                    #fecha="ngModel"></label>
+            <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="alert alert-danger">
+                <div *ngIf="fecha.errors.required">
+                    Campo Requerido.
+                </div>
+            </div> -->
+          <!--   <div class="img">
+                <label for="foto" class="form-control mr-sm-2">Seleccionar Foto</label>
+                    <input id="foto" type="file" required name="foto" ngModel required #file="ngModel"
+                        accept="image/png, image/jpeg" (change)="onFileSelect($event)" class="form-control mr-sm-2">
+                <div *ngIf="file.invalid && (file.dirty || file.touched)" class="alert alert-danger">
+                    <div *ngIf="file.errors.required">
+                        Imagen requerida.
+                    </div>
+                </div>
+            </div> -->
+          
+          
+          
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="f.invalid">Registrar</button>
+          
+            <div class="submitted-message" *ngIf="f.submitted">
+                <p>Has servido el pedido de la Mesa {{ f.value.nombre }}!</p>
+                <button (click)="f.resetForm({})">Actualizar otra mesa</button>
+            </div>
+          
+          </form>
+          
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          De acuerdo
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->

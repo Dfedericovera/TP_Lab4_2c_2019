@@ -1,0 +1,53 @@
+<app-cabecera></app-cabecera>
+<!-- ELECCION FILTRADO -->
+<nav class="navbar navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerTodos()" *ngIf="PerfilUsuario=='Socio'">Todos los
+        pedidos</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerPendientes()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Cocinero'">Pendientes</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerEnPreparacion()" *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Cocinero'">En
+        preparacion</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerListoParaServir()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Mozo'">Listo Para Servir</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerEntregados()"
+        *ngIf="PerfilUsuario=='Socio'">Entregado</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerCancelados()" *ngIf="PerfilUsuario=='Socio'">Pedido
+        cancelado</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerFinalizados()" *ngIf="PerfilUsuario=='Socio'">Pedido
+        finalizado</button></li>
+  </ul>
+</nav>
+<!-- TABLA DE JUEGOS -->
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Estado</th>
+      <th>Mesa</th>
+      <th>Descripcion</th>
+      <th>Tomar pedido</th>
+      <th>Listo para Servir</th>
+      <th>Servir</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pedido of listado">
+
+      <td id="codigo">{{pedido.codigo}}&nbsp;
+        <i id="MyTooltip" style="cursor: pointer;" (click)="copiarCodigo()" class="far fa-copy" title="Copiar">
+        </i>
+      </td>
+
+      <td>{{pedido.estado}} </td>
+      <td>{{pedido.mesa}} </td>
+      <td>{{pedido.descripcion}} </td>
+      <td> <app-tomar-pedido [pedido]="pedido"></app-tomar-pedido> </td>
+      <td> <app-listo-para-servir [pedido]="pedido"></app-listo-para-servir> </td>
+      <td> <app-servir [pedido]="pedido" ></app-servir> </td>
+      <!-- 
+      <td *ngIf="pedido.gano">Gano </td>
+      <td *ngIf="!pedido.gano">Perdio</td> -->
+    </tr>
+  </tbody>
+</table>

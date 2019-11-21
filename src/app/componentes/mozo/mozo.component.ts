@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutService } from "../../servicios/auth.service";
 
 @Component({
   selector: 'app-mozo',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mozo.component.scss']
 })
 export class MozoComponent implements OnInit {
-
+  nombre:any;
   anagrama: string = "";
   respuesta: boolean;
   palabraIngresada: string = null;
@@ -17,7 +18,8 @@ export class MozoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor() {
+  constructor(private aut: AutService) {
+    this.nombre = aut.getNombre();
   }
 
   nuevo() {

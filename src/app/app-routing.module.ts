@@ -7,11 +7,15 @@ import { VerificarJWTService } from './servicios/verificar-jwtservice.service';
 import { EmpleadoService } from './servicios/empleado.service';
 import { MozoComponent } from './componentes/mozo/mozo.component';
 import { MozoService } from './servicios/mozo.service';
+import { CocineroComponent } from './componentes/cocinero/cocinero.component';
+import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-pedidos.component';
 
-const routes: Routes = [
+const routes = [
   { path: '',canActivate: [VerificarJWTService],  component: PrincipalComponent},
   { path: 'Mozo',canActivate: [MozoService],  component: MozoComponent},
   { path: 'Login', component: LoginComponent },
+  { path: 'Cocinero', component: CocineroComponent },
+  { path: 'Listado', component: ListadoPedidosComponent },
   { path: 'Registro', component: RegistroComponent }
 ];
 

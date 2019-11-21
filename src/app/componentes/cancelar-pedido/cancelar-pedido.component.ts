@@ -4,11 +4,11 @@ import { MozoService } from '../../servicios/mozo.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-cambiar-estado',
-  templateUrl: './cambiar-estado.component.html',
-  styleUrls: ['./cambiar-estado.component.scss']
+  selector: 'app-cancelar-pedido',
+  templateUrl: './cancelar-pedido.component.html',
+  styleUrls: ['./cancelar-pedido.component.scss']
 })
-export class CambiarEstadoComponent implements OnInit {
+export class CancelarPedidoComponent implements OnInit {
   @Input() estado: any;
   uploadForm: FormGroup;
   constructor(
@@ -21,7 +21,7 @@ export class CambiarEstadoComponent implements OnInit {
       profile: [''],
       nombre: [''],
       genero: [''],
-      fecha_de_estreno:[''],
+      fecha_de_estreno: [''],
       cantidadDePublico: 0,
 
     });
@@ -33,24 +33,24 @@ export class CambiarEstadoComponent implements OnInit {
       this.subirPelicula(f);
     } */
   subirPelicula(obj: FormData) {
-    let url = '/mesas/'+ this.estado +'/'+ obj.get('codigo').toString();
-    console.log(url);
-    this.miservicio.cambiarEstado(url);
+    let url = '/pedido/'+ obj.get('codigo');
+    this.miservicio.cancelarPedido(url);
   }
-  onFileSelect(event) {
+/*   onFileSelect(event) {
     console.log(event.target.files[0]);
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('profile').setValue(file);
     }
-  }
+  } */
   onSubmit(form: NgForm) {
+    /* console.log(form.value); */
     const formData = new FormData();
-    formData.append('file', this.uploadForm.get('profile').value);
+/*     formData.append('id_mesa', form.value['id_mesa']);
+    formData.append('id_menu', form.value['id_menu'] ); */
     formData.append('codigo', form.value['nombre'] );/*
-    formData.append('genero', form.value['genero'] );
-    formData.append('cantidadDePublico', form.value['cantidadDePublico'] );
     formData.append('fecha_de_estreno', form.value['fecha_de_estreno'] ); */
     this.subirPelicula(formData);
   }
+
 }

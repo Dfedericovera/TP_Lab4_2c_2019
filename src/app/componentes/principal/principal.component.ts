@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AutService } from "../../servicios/auth.service";
 
 @Component({
   selector: 'app-principal',
@@ -7,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
+  nombre:any;
  public status: any = {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-  constructor() {  }
+  constructor(private aut:AutService) { 
+    this.nombre = aut.getNombre();
+   }
 
   ngOnInit() {
   }

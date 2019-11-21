@@ -12,11 +12,20 @@ export class MozoService implements CanActivate {
   api = "http://localhost/APACHE/PHP/LaComandaAPI";
   constructor(private miHttp: MiHttpService, private auth: AutService, private router: Router) { }
 
+  cancelarPedido(url){
+    this.miHttp.httpDelete(this.api + url).toPromise().then(t => console.log(t));
+  
+  }
+
+  registrarPedido(url, obj){
+    this.miHttp.postFormData(this.api + url, obj).toPromise().then(t => console.log(t));
+  }
+
   servirPedido(url,obj){
     this.miHttp.postFormData(this.api + url, obj).toPromise().then(data => console.log(data));
   }
 
-  cambiarAEstadoEsperando(ruta){
+  cambiarEstado(ruta){
     this.miHttp.httpGetO(this.api + ruta).toPromise().then(data => console.log(data));
   }
 

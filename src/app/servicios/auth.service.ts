@@ -22,6 +22,15 @@ export class AutService {
       return false;
     }
   }
+  getNombre(){
+    try {
+      /* console.log('Token: ', this.jwtHelper.decodeToken(localStorage.getItem("token"))); */
+      return this.jwtHelper.decodeToken(localStorage.getItem("token")).nombre;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
 
   public getToken ()
   {
