@@ -1,0 +1,51 @@
+<app-cabecera></app-cabecera>
+<!-- ELECCION FILTRADO -->
+<nav class="navbar navbar-dark bg-dark">
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerTodos()" *ngIf="PerfilUsuario=='Socio'">Todas las
+        mesas</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerEsperando()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Mozo'">Esperando pedido</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerComiendo()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Cocinero'">Comiendo</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerPagando()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Cocinero'">Pagando</button></li>
+    <li class="nav-item"><button class="btn btn-link" (click)="TraerCerradas()"
+        *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Mozo'">Cerrada</button></li>
+  </ul>
+</nav>
+<!-- TABLA DE JUEGOS -->
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Estado</th>
+      <th>Cobrar</th>
+      <th>Cerrar</th>
+      <!--    <th>Tomar pedido</th>
+      <th>Listo para Servir</th>
+      <th>Servir</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pedido of listado">
+      <td id="codigo">{{pedido.codigo}}&nbsp;
+        <i id="MyTooltip" style="cursor: pointer;" (click)="copiarCodigo()" class="far fa-copy" title="Copiar">
+        </i>
+      </td>
+      <td>{{pedido.estado}} </td>
+      <td >
+        <app-boton-cobrar *ngIf="pedido.estado=='Con clientes pagando'" [mesa]="pedido"></app-boton-cobrar>
+      </td>
+      <td *ngIf="pedido.estado!='Cerrada'">
+        <app-boton-cerrar-mesa [mesa]="pedido" (cerrar)="actualizarVista()"></app-boton-cerrar-mesa>
+      </td>
+      <!-- <td> <app-tomar-pedido [pedido]="pedido"></app-tomar-pedido> </td>
+      <td> <app-listo-para-servir [pedido]="pedido"></app-listo-para-servir> </td>
+      <td> <app-servir [pedido]="pedido" ></app-servir> </td> -->
+      <!-- 
+      <td *ngIf="pedido.gano">Gano </td>
+      <td *ngIf="!pedido.gano">Perdio</td> -->
+    </tr>
+  </tbody>
+</table>

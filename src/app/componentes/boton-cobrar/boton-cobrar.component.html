@@ -1,27 +1,24 @@
 <button type="button" class="btn btn-info btn-circle"  data-toggle="modal"
-  data-target="#tomarPedidoModal" (click)="mostrarCodigo(f)"><i class="fas fa-utensils"></i>
-</button>
+  data-target="#ServirModal" ><i class="fas fa-dollar-sign"></i>
 
 
-
-<!-- Modal Cancelar pedido -->
-<div class="modal fade" id="tomarPedidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal Listo pedido -->
+<div class="modal fade" id="ServirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: black;">
-          Tomar Pedido
+        <h5 class="modal-title" >
+          Listo Pedido
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-         <app-tomar-pedido-form [pedido]="pedido"></app-tomar-pedido-form>
-      </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSubmit()" >Cobrar mesa {{mesa.codigo}}</button>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >
           De acuerdo
         </button>
       </div>

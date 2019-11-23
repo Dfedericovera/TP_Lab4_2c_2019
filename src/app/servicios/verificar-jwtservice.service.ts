@@ -28,20 +28,8 @@ export class VerificarJWTService implements CanActivate {
         this.router.navigate(['/Mozo']);
         return !true;
       }
-      else if (this.auth.getPerfil() == 'Cocinero') {
+      else if (this.auth.getPerfil() == 'Cocinero' || this.auth.getPerfil() == 'Bartender' || this.auth.getPerfil() == 'Cervecero' || this.auth.getPerfil() == 'CandyBar') {
         this.router.navigate(['/Cocinero']);
-        return !true;
-      }
-      else if (this.auth.getPerfil() == 'Bartender') {
-        this.router.navigate(['/Bartender']);
-        return !true;
-      }
-      else if (this.auth.getPerfil() == 'Cervecero') {
-        this.router.navigate(['/Cervecero']);
-        return !true;
-      }
-      else if (this.auth.getPerfil() == 'CandyBar') {
-        this.router.navigate(['/CandyBar']);
         return !true;
       }
 

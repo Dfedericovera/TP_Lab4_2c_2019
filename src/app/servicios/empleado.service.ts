@@ -16,7 +16,7 @@ export class EmpleadoService implements CanActivate {
 
   tomarPedido(ruta, objeto){
     console.log(this.api + ruta);
-    this.miHttp.postFormData(this.api + ruta, objeto)
+    return this.miHttp.postFormData(this.api + ruta, objeto)
     .toPromise()
     .then(data => {
       console.log( data );

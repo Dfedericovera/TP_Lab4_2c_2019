@@ -9,6 +9,7 @@ import { MozoComponent } from './componentes/mozo/mozo.component';
 import { MozoService } from './servicios/mozo.service';
 import { CocineroComponent } from './componentes/cocinero/cocinero.component';
 import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-pedidos.component';
+import { ListadoMesasComponent } from './componentes/listado-mesas/listado-mesas.component';
 
 const routes = [
   { path: 'TP_Lab4_2c_2019',canActivate: [VerificarJWTService],  component: PrincipalComponent},
@@ -17,6 +18,7 @@ const routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Cocinero', component: CocineroComponent },
   { path: 'Listado', component: ListadoPedidosComponent },
+  { path: 'Mesas', component: ListadoMesasComponent },
   { path: 'Registro', component: RegistroComponent }
 ];
 

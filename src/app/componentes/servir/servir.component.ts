@@ -16,12 +16,14 @@ export class ServirComponent implements OnInit {
     private EmpleadoService: EmpleadoService,
     private mozoService: MozoService,
     private formBuilder: FormBuilder,
-  ) { }
+  ) {
+    
+   }
 
   uploadForm: FormGroup;
 
-  ngOnInit() {/* 
-    console.log(this.pedido); */
+  ngOnInit() {
+    
     this.uploadForm = this.formBuilder.group({
       nombre: [''],
     });
@@ -33,13 +35,22 @@ export class ServirComponent implements OnInit {
     
   }
 
-  subirPelicula(obj: FormData) {
-    let url = '/pedido/servir';    
-    this.EmpleadoService.tomarPedido(url,obj);
+  verPedido(){
+    console.log(this.pedido);
   }
 
-  onSubmit() {
+  subirPelicula(obj: FormData) {
+    let url = '/pedido/servir';
+    this.EmpleadoService.tomarPedido(url,obj);
+    //cambiarcolor de boton
+  }
+
+  cambiarColorBoton(respuesta){
+  }
+
+  servirPedido() {
     const formData = new FormData();
+    console.log(this.pedido.codigo);
     formData.append('codigo', this.pedido.codigo);/*
     formData.append('minutosEstimados', form.value['minutosEstimados'] );
     formData.append('cantidadDePublico', form.value['cantidadDePublico'] );

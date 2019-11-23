@@ -29,6 +29,10 @@ import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-p
 import { TomarPedidoComponent } from './componentes/tomar-pedido/tomar-pedido.component';
 import { ListoParaServirComponent } from './componentes/listo-para-servir/listo-para-servir.component';
 import { ServirComponent } from './componentes/servir/servir.component';
+import { ListadoMesasComponent } from './componentes/listado-mesas/listado-mesas.component';
+import { BotonCobrarComponent } from './componentes/boton-cobrar/boton-cobrar.component';
+import { BotonCerrarMesaComponent } from './componentes/boton-cerrar-mesa/boton-cerrar-mesa.component';
+import { TomarPedidoFormComponent } from './componentes/tomar-pedido-form/tomar-pedido-form.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { ServirComponent } from './componentes/servir/servir.component';
     TomarPedidoComponent,
     ListoParaServirComponent,
     ServirComponent,
+    ListadoMesasComponent,
+    BotonCobrarComponent,
+    BotonCerrarMesaComponent,
+    TomarPedidoFormComponent,
   ],
   imports: [
     BrowserModule,
