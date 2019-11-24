@@ -18,7 +18,7 @@ import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 const globalSettings: RecaptchaSettings = {siteKey:'6LedkbkUAAAAANj1mPFBIJr53_pOgUcbjbshQ5Sv'};
 import { VerificarJWTService } from "./servicios/verificar-jwtservice.service";
 import { AutService } from "./servicios/auth.service";
-import { MozoComponent } from './componentes/mozo/mozo.component';
+import { MozoComponent } from './componentes/empleado/mozo.component';
 import { ActualizarFotoComponent } from './componentes/actualizar-foto/actualizar-foto.component';
 import { CambiarEstadoComponent } from './componentes/cambiar-estado/cambiar-estado.component';
 import { ServirPedidoComponent } from './componentes/servir-pedido/servir-pedido.component';
@@ -33,6 +33,7 @@ import { ListadoMesasComponent } from './componentes/listado-mesas/listado-mesas
 import { BotonCobrarComponent } from './componentes/boton-cobrar/boton-cobrar.component';
 import { BotonCerrarMesaComponent } from './componentes/boton-cerrar-mesa/boton-cerrar-mesa.component';
 import { TomarPedidoFormComponent } from './componentes/tomar-pedido-form/tomar-pedido-form.component';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { TomarPedidoFormComponent } from './componentes/tomar-pedido-form/tomar-
     BotonCobrarComponent,
     BotonCerrarMesaComponent,
     TomarPedidoFormComponent,
+    ClienteComponent,
   ],
   imports: [
     BrowserModule,

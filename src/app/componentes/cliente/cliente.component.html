@@ -1,0 +1,64 @@
+<!-- NUEVO FORM -->
+
+<div class="container register">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">Tiempo restante</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">Descripcion</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading">Bienvenido a La Comanda</h3>
+          <div class="row register-form">
+            <div class="col-md-12">
+              <form method="post">
+                <div class="form-group">
+                  <h5>Codigo de mesa:</h5>
+                  <input type="text"  name="primerNumero" class="form-control"
+                    placeholder="Codigo de su mesa" required="" /><!-- [(ngModel)]="nuevoJuego.primerNumero" -->
+                </div>
+                <div class="form-group">
+                  <h5>Codigo de pedido:</h5>
+                  <input type="text"  name="segundoNumero" class="form-control"
+                    placeholder="Codigo de su pedido" required="" />
+                </div>
+                <div class="form-group">
+                  <h5>Tiempo restante:</h5>
+                  <input type="text"  name="numeroIngresado" readonly
+                    class="form-control" placeholder="Aqui se mostrara el tiempo restante" required="" />
+                </div>
+                <div class="form-group">
+                  <h2 [hidden]="ocultarVerificar"><button (click)="verificar()" class="btnContactSubmit">Verificar
+                      {{Tiempo}}
+                    </button></h2>
+                  <input [hidden]="!ocultarVerificar" (click)="NuevoJuego()" type="submit" name="LGform1"
+                    class="btnContactSubmit" value="Muestrame el tiempo!" />
+                  <h2 [hidden]="ocultarVerificar">
+                    <p><i class="fas fa-cog fa-spin"></i>Esperando numero...</p>
+                  </h2>
+                  <h3 [hidden]="!gano">GANOOO!</h3>
+                  <h3 [hidden]="!perdio">Perdio!</h3>
+                  <h2 [hidden]="ocultarVerificar">
+                    <h3>usted aún no gano </h3>
+                  </h2>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show text-align form-new" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <h3 class="descripcion">Pongamos a prueba tu cerebro!</h3>
+          <p class="descripcion">Prueba tu agilidad mental para las matematicas!</p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

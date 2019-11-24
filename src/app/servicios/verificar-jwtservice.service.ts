@@ -32,6 +32,9 @@ export class VerificarJWTService implements CanActivate {
         this.router.navigate(['/Cocinero']);
         return !true;
       }
+      else if(this.auth.getPerfil() == 'Cliente'){
+        this.router.navigate(['/Cliente']);
+      }
 
     }
     else {

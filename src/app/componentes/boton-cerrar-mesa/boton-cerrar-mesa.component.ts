@@ -37,19 +37,21 @@ export class BotonCerrarMesaComponent implements OnInit {
     let url = '/mesas/estadoCerrada/'+ this.mesa.codigo;
     this.miservicio.cobrar(url).toPromise()
     .then(
-      data => console.log(data)
+      data => this.cambiarMensajeModal(data)
       )
-    .then(y=>
-      this.cerrar.emit()
+    .catch(error => 
+      console.log("error", error)
     )
     
   }
-  onFileSelect(event) {
-    console.log(event.target.files[0]);
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.uploadForm.get('profile').setValue(file);
-    }
+  cambiarMensajeModal(respuesta){
+    console.log(respuesta.Mensaje);
+    document.getElementById("MensajeCerrarModal").innerText= respuesta.Mensaje;
   }
+
+  actualizarLista(){
+    this.cerrar.emit();
+  }
+
 
 }
