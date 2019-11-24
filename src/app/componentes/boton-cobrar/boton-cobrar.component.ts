@@ -34,15 +34,16 @@ export class BotonCobrarComponent implements OnInit {
     } */
     onSubmit(obj: FormData) {
     let url = '/mesas/cobrar/'+ this.mesa.codigo;
-    this.miservicio.cobrar(url);
+    this.miservicio.cobrar(url).toPromise().then(data=> this.cambiarMensajeModal(data)).catch(error => {
+      console.log("error", error);
+    });
   }
-  onFileSelect(event) {
-    console.log(event.target.files[0]);
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.uploadForm.get('profile').setValue(file);
-    }
+
+  cambiarMensajeModal(respuesta){
+    console.log(respuesta.Mensaje);
+    document.getElementById("MensajeModalBody").innerText= respuesta.Mensaje;
   }
+
 /*   onSubmit(form: NgForm) {
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('profile').value);

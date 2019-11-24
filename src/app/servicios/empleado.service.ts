@@ -15,11 +15,11 @@ export class EmpleadoService implements CanActivate {
   filtrado:any;
 
   tomarPedido(ruta, objeto){
-    console.log(this.api + ruta);
+    /* console.log(this.api + ruta); */
     return this.miHttp.postFormData(this.api + ruta, objeto)
     .toPromise()
     .then(data => {
-      console.log( data );
+      return data ;
     }, err => {
       console.log(err);
     });

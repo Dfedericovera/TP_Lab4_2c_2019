@@ -57,8 +57,8 @@
         *ngIf="PerfilUsuario=='Socio' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Cocinero' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Bartender' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Cervecero' && pedido.estado == 'En Preparacion' || PerfilUsuario=='CandyBar' && pedido.estado == 'En Preparacion'">
         <app-listo-para-servir [pedido]="pedido"></app-listo-para-servir>
       </td>
-      <td *ngIf="PerfilUsuario=='Socio' || PerfilUsuario=='Mozo'">
-        <app-servir [pedido]="pedido"></app-servir>
+      <td *ngIf="PerfilUsuario=='Socio' && pedido.estado == 'Listo para Servir' || PerfilUsuario=='Mozo'">
+        <app-servir [pedido]="pedido" (servido)="TraerListoParaServir()"></app-servir>
       </td>
       <!-- 
       <td *ngIf="pedido.gano">Gano </td>

@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-info btn-circle"  data-toggle="modal"
-  data-target="#ServirModal" ><i class="fas fa-dollar-sign"></i>
-
+  data-target="#ServirModal" (click)="onSubmit()"><i class="fas fa-dollar-sign"></i>
+</button>
 
 <!-- Modal Listo pedido -->
 <div class="modal fade" id="ServirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -8,7 +8,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >
+        <h5 class="modal-title" style="color: black;">
           Listo Pedido
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -16,11 +16,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSubmit()" >Cobrar mesa {{mesa.codigo}}</button>
+        <h6 id="MensajeModalBody" style="color: black;"></h6>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" >
           De acuerdo
         </button>
+        <!-- CAMBIAR ESTADO CERRADA -->
+        <!-- ARRGLAR BOTON CERRAR cuando hay mas de dos mesas -->
       </div>
     </div>
   </div>

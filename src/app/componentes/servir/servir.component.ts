@@ -11,6 +11,7 @@ import { EmpleadoService } from "../../servicios/empleado.service";
 })
 export class ServirComponent implements OnInit {
   @Input() pedido: any;
+  @Output() servido:EventEmitter<any> = new EventEmitter();
   f:NgForm;
   constructor(
     private EmpleadoService: EmpleadoService,
@@ -41,20 +42,27 @@ export class ServirComponent implements OnInit {
 
   subirPelicula(obj: FormData) {
     let url = '/pedido/servir';
-    this.EmpleadoService.tomarPedido(url,obj);
-    //cambiarcolor de boton
+    this.EmpleadoService.tomarPedido(url,obj).then(data => this.ConfirmacionPedido(data));
+    //cambiar inner modal text    
   }
 
-  cambiarColorBoton(respuesta){
+  ConfirmacionPedido(respuesta){
+    let innerModalText =  document.getElementById("ConfirmacionPedido");
+    innerModalText.innerText = respuesta.Mensaje;
+    /* console.log(innerModalText); */
   }
 
   servirPedido() {
     const formData = new FormData();
-    console.log(this.pedido.codigo);
+    /* console.log(this.pedido.codigo); */
     formData.append('codigo', this.pedido.codigo);/*
     formData.append('minutosEstimados', form.value['minutosEstimados'] );
     formData.append('cantidadDePublico', form.value['cantidadDePublico'] );
     formData.append('fecha_de_estreno', form.value['fecha_de_estreno'] ); */
     this.subirPelicula(formData);
+  }
+
+  actualizarComponente(){
+    this.servido.emit();
   }
 }
