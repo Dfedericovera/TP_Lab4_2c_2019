@@ -24,6 +24,8 @@
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.5.4",
+    "jspdf": "^1.5.3",
+    "jspdf-autotable": "^3.2.11",
     "ng-recaptcha": "^5.0.0",
     "rxjs": "~6.3.3",
     "rxjs-compat": "^6.5.3",

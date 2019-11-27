@@ -11,6 +11,7 @@ import { CocineroComponent } from './componentes/cocinero/cocinero.component';
 import { ListadoPedidosComponent } from './componentes/listado-pedidos/listado-pedidos.component';
 import { ListadoMesasComponent } from './componentes/listado-mesas/listado-mesas.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { ListadoEmpleadosComponent } from './componentes/listado-empleados/listado-empleados.component';
 
 const routes = [
   { path: 'TP_Lab4_2c_2019',canActivate: [VerificarJWTService],  component: PrincipalComponent},
@@ -21,6 +22,7 @@ const routes = [
   { path: 'Listado', component: ListadoPedidosComponent },
   { path: 'Mesas', component: ListadoMesasComponent },
   { path: 'Cliente', component: ClienteComponent },
+  { path: 'Empleados', component: ListadoEmpleadosComponent },
   { path: 'Registro', component: RegistroComponent }
 ];
 

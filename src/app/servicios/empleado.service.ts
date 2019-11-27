@@ -14,6 +14,13 @@ export class EmpleadoService implements CanActivate {
 
   filtrado:any;
 
+  tiempoRestante(url){
+    return this.miHttp.httpGetO(this.api + url);
+  }
+  registrarEncuesta(url, obj){
+    return this.miHttp.postFormData(this.api + url,obj);
+  }
+
   tomarPedido(ruta, objeto){
     /* console.log(this.api + ruta); */
     return this.miHttp.postFormData(this.api + ruta, objeto)
@@ -67,7 +74,7 @@ export class EmpleadoService implements CanActivate {
           /* console.info("jugadores service perdedores", data); */
         return this.filtrado;
       }
-      console.info("jugadores service todos", data);
+      console.info("Pedidos", data);
       return this.filtrado
     }    
     )

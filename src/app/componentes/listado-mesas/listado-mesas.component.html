@@ -12,14 +12,17 @@
         *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Cocinero'">Pagando</button></li>
     <li class="nav-item"><button class="btn btn-link" (click)="TraerCerradas()"
         *ngIf="PerfilUsuario=='Socio'||PerfilUsuario=='Mozo'">Cerrada</button></li>
+    <li *ngIf="PerfilUsuario=='Socio'">
+      <button (click)="generate()" class="btn btn-danger">Generar PDF</button></li>
   </ul>
 </nav>
-<!-- TABLA DE JUEGOS -->
+<!-- TABLA DE Mesas -->
 <table class="table table-dark">
   <thead>
     <tr>
       <th>Codigo</th>
       <th>Estado</th>
+      <th>Foto</th>
       <th>Cobrar</th>
       <th>Cerrar</th>
       <!--    <th>Tomar pedido</th>
@@ -28,17 +31,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pedido of listado">
-      <td id="codigo">{{pedido.codigo}}&nbsp;
+    <tr *ngFor="let mesa of listado">
+      <td id="codigo">{{mesa.codigo}}&nbsp;
         <i id="MyTooltip" style="cursor: pointer;" (click)="copiarCodigo()" class="far fa-copy" title="Copiar">
         </i>
       </td>
-      <td>{{pedido.estado}} </td>
-      <td >
-        <app-boton-cobrar *ngIf="pedido.estado=='Con clientes pagando'" [mesa]="pedido"></app-boton-cobrar>
+      <td>{{mesa.estado}} </td>
+      <td><img src="{{API}}{{mesa.foto}}" alt=""> </td>
+      <td>
+        <app-boton-cobrar *ngIf="mesa.estado=='Con clientes pagando'" [mesa]="mesa"></app-boton-cobrar>
       </td>
-      <td *ngIf="pedido.estado!='Cerrada'">
-        <app-boton-cerrar-mesa [mesa]="pedido" (cerrar)="actualizarVista()"></app-boton-cerrar-mesa>
+      <td *ngIf="mesa.estado!='Cerrada'">
+        <app-boton-cerrar-mesa [mesa]="mesa" (cerrar)="actualizarVista()"></app-boton-cerrar-mesa>
       </td>
       <!-- <td> <app-tomar-pedido [pedido]="pedido"></app-tomar-pedido> </td>
       <td> <app-listo-para-servir [pedido]="pedido"></app-listo-para-servir> </td>
@@ -47,5 +51,45 @@
       <td *ngIf="pedido.gano">Gano </td>
       <td *ngIf="!pedido.gano">Perdio</td> -->
     </tr>
+  </tbody>
+</table>
+
+<!-- TABLA DE MESAS PDF --><!-- style="display: none;" -->
+<!-- <table id="mesasTable" >
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Estado</th>
+      <th>Foto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mesa of listado">
+      <td align="right">{{mesa.codigo}}</td>
+      <td>{{mesa.estado}}</td>
+      <td><img src="{{base64Image}}"></td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+<table id="mytable" style="display: none;"><!--   -->
+  <thead>
+    <tr>
+      <th>Codigo mesa</th>
+      <th>Estado</th>
+      <th>Foto</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let mesa of listado" ><!--  -->
+          <td align="right">{{mesa.codigo}}</td>
+          <td>{{mesa.estado}}</td>
+          <td><img class='img'
+            src="{{mesa.imgbase64}}"/>
+        </td>
+        </tr>    
   </tbody>
 </table>

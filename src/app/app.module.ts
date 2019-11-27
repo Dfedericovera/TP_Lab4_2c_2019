@@ -34,6 +34,8 @@ import { BotonCobrarComponent } from './componentes/boton-cobrar/boton-cobrar.co
 import { BotonCerrarMesaComponent } from './componentes/boton-cerrar-mesa/boton-cerrar-mesa.component';
 import { TomarPedidoFormComponent } from './componentes/tomar-pedido-form/tomar-pedido-form.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { EmpleadoPipe } from './pipes/empleado.pipe';
+import { ListadoEmpleadosComponent } from './componentes/listado-empleados/listado-empleados.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ClienteComponent } from './componentes/cliente/cliente.component';
     BotonCerrarMesaComponent,
     TomarPedidoFormComponent,
     ClienteComponent,
+    EmpleadoPipe,
+    ListadoEmpleadosComponent,
   ],
   imports: [
     BrowserModule,

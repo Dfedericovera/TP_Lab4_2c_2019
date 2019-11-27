@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
+import { EmpleadoService } from "../../servicios/empleado.service";
 
 @Component({
   selector: 'app-cliente',
@@ -9,9 +11,10 @@ import { Subscription } from 'rxjs';
 export class ClienteComponent implements OnInit {
 
   @Output()
-
+  OK:any=true;
+  ERROR:any=true;
   enviarJuego: EventEmitter<any> = new EventEmitter<any>();
-  ocultarVerificar: boolean;
+  verSubmit: boolean;
   Tiempo: number;
   repetidor: any;
   gano:Boolean;
@@ -20,36 +23,67 @@ export class ClienteComponent implements OnInit {
 
   ngOnInit() {
   }
-  constructor() {
-    this.ocultarVerificar = true;    
-    console.info("Inicio agilidad");
+  constructor(private servicio:EmpleadoService) {
+    this.verSubmit = true;
   }
   
-  NuevoJuego() {
-    this.ocultarVerificar = false;
-    this.perdio=false;
+  getTiempoRestante(f:NgForm) {
+    console.log(f.value);
+    this.ERROR=true;
+    this.servicio.tiempoRestante('/pedido/tiempoRestante/'+ f.value['CodigoPedido'])
+    .toPromise()
+    .then(respuesta => this.mostrarVerificacion(respuesta) )
+    .then(data => this.verSubmit = true)
+    /*  */
+    .catch(error => this.manejarError(error));
+    this.verSubmit = false;
     this.Tiempo = 10;
+    this.gano=false;/* 
     this.repetidor = setInterval(() => {
 
       this.Tiempo--;
-     /*  console.log("llego", this.Tiempo); */
       if (this.Tiempo == 0) {
         clearInterval(this.repetidor);
         this.verificar();
-        this.ocultarVerificar = true;
+        this.verSubmit = true;
       }
-    }, 900);
-    this.gano=false;
+    }, 900); */    
   }
 
 
-  verificar() {
-    this.ocultarVerificar = true;
-    this.perdio=!this.gano;
-    //this.ocultarVerificar=false;
-    clearInterval(this.repetidor);
-    
+  mostrarVerificacion(respuesta) {
+    console.log(respuesta);
+    let mensaje = document.getElementById('MensajeVerificado') as HTMLInputElement;
+    if(respuesta.Estado == 'ERROR'){
+      mensaje.value = respuesta.Mensaje;
+    }
+    else{
+      mensaje.value = respuesta.Mensaje;
+    }
+  }
 
+  registrarEncuesta(form:NgForm){
+    this.ERROR=true;
+    this.servicio.registrarEncuesta('/encuesta/registrar',form.value)
+    .toPromise()
+    .then(data => this.verificarRespuestaEncuesta(data))
+    .catch(error => this.manejarError(error));
+  }
+
+  verificarRespuestaEncuesta(respuesta){
+    
+    console.log(respuesta);
+    if(respuesta.Estado == 'OK'){
+      this.OK = false;
+    }
+    if(respuesta.Estado == 'ERROR'){
+      this.ERROR=false;
+    }
+  }
+  manejarError(error){
+    console.log(error);
+    this.ERROR=false;
+    this.verSubmit = true
   }
 
 }

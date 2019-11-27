@@ -1,52 +1,80 @@
-<!-- NUEVO FORM -->
-
+<!-- FORMULARIOS CLIENTE -->
 <div class="container register">
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-            aria-selected="true">Tiempo restante</a>
+            aria-selected="true">Tiempo restante para entrega de pedido</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Descripcion</a>
+            aria-selected="false">Encuesta</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
+        <!-- SECCION TIEMPO -->
         <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel" aria-labelledby="home-tab">
           <h3 class="register-heading">Bienvenido a La Comanda</h3>
           <div class="row register-form">
             <div class="col-md-12">
-              <form method="post">
+              <form method="post" #f="ngForm">
                 <div class="form-group">
                   <h5>Codigo de mesa:</h5>
-                  <input type="text"  name="primerNumero" class="form-control"
-                    placeholder="Codigo de su mesa" required="" /><!-- [(ngModel)]="nuevoJuego.primerNumero" -->
+                  <input type="text" name="CodigoMesa" ngModel class="form-control" placeholder="Codigo de su mesa"
+                    required minlength="5" #codigoMesaTiempo="ngModel" pattern="[0-9]*"/>
+                    <div *ngIf="codigoMesaTiempo.invalid && (codigoMesaTiempo.dirty || codigoMesaTiempo.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="codigoMesaTiempo.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="codigoMesaTiempo.errors.pattern">
+                      El Codigo solo debe incluir numeros.
+                    </div>
+                    <div *ngIf="codigoMesaTiempo.errors.minlength">
+                      El Codigo debe tener 5 caracteres.
+                    </div>
+                  </div> 
                 </div>
                 <div class="form-group">
                   <h5>Codigo de pedido:</h5>
-                  <input type="text"  name="segundoNumero" class="form-control"
-                    placeholder="Codigo de su pedido" required="" />
+                  <input type="text" name="CodigoPedido" ngModel class="form-control" placeholder="Codigo de su pedido"
+                    required minlength="5" #CodigoPedido="ngModel" pattern="[0-9]*"/>
+                    <div *ngIf="CodigoPedido.invalid && (CodigoPedido.dirty || CodigoPedido.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="CodigoPedido.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="CodigoPedido.errors.pattern">
+                      El Codigo solo debe incluir numeros y/o letras.
+                    </div>
+                    <div *ngIf="CodigoPedido.errors.minlength">
+                      El Codigo debe tener 5 caracteres.
+                    </div>
+                  </div> 
                 </div>
                 <div class="form-group">
                   <h5>Tiempo restante:</h5>
-                  <input type="text"  name="numeroIngresado" readonly
-                    class="form-control" placeholder="Aqui se mostrara el tiempo restante" required="" />
+                  <input type="text" name="numeroIngresado" readonly class="form-control" id="MensajeVerificado"
+                    placeholder="Aqui se mostrara el tiempo restante" />
                 </div>
                 <div class="form-group">
-                  <h2 [hidden]="ocultarVerificar"><button (click)="verificar()" class="btnContactSubmit">Verificar
+                  <!-- <h2 [hidden]="verSubmit"><button (click)="verificar()" class="btnContactSubmit">Verificar
                       {{Tiempo}}
-                    </button></h2>
-                  <input [hidden]="!ocultarVerificar" (click)="NuevoJuego()" type="submit" name="LGform1"
-                    class="btnContactSubmit" value="Muestrame el tiempo!" />
-                  <h2 [hidden]="ocultarVerificar">
-                    <p><i class="fas fa-cog fa-spin"></i>Esperando numero...</p>
+                    </button></h2>   -->
+                  <div class="clearfix">
+                    <input [hidden]="!verSubmit" (click)="getTiempoRestante(f)" type="submit" name="LGform1"
+                      [disabled]="f.invalid" class="btnContactSubmit" value="Muestrame cuanto falta!" />
+                  </div>
+                  <h2 [hidden]="verSubmit">
+                    <p><i class="fas fa-cog fa-spin"></i>Verificando...</p>
                   </h2>
-                  <h3 [hidden]="!gano">GANOOO!</h3>
-                  <h3 [hidden]="!perdio">Perdio!</h3>
-                  <h2 [hidden]="ocultarVerificar">
-                    <h3>usted aún no gano </h3>
+                  <h3 [hidden]="!gano">Listo!</h3>
+                  <h3 [hidden]="ERROR">Hubo un error intente de nuevo</h3>
+                  <!--
+                  <h3 [hidden]="!perdio">Perdio!</h3> -->
+                  <h2 [hidden]="verSubmit">
+                    <h3>Espere por favor</h3>
                   </h2>
                 </div>
 
@@ -54,9 +82,137 @@
             </div>
           </div>
         </div>
+        <!-- SECCION DESCRIPCION -->
         <div class="tab-pane fade show text-align form-new" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <h3 class="descripcion">Pongamos a prueba tu cerebro!</h3>
-          <p class="descripcion">Prueba tu agilidad mental para las matematicas!</p> 
+          <h3 class="register-heading">Encuesta de satisfaccion</h3>
+          <div class="row register-form">
+            <div class="col-md-12">
+              <form method="post" #EncuestaForm="ngForm">
+                <div class="form-group">
+                  <h5>Codigo de mesa:</h5>
+                  <input type="text" name="codigoMesa" ngModel class="form-control" placeholder="Codigo de su mesa"
+                    required minlength="5" #codigoMesa="ngModel" pattern="[0-9]*" />
+                  <div *ngIf="codigoMesa.invalid && (codigoMesa.dirty || codigoMesa.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="codigoMesa.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="codigoMesa.errors.pattern">
+                      El Codigo solo debe incluir numeros.
+                    </div>
+                    <div *ngIf="codigoMesa.errors.minlength">
+                      El Codigo debe tener 5 caracteres.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>Puntuacion de mesa:</h5>
+                  <input type="text" name="puntuacionMesa" ngModel class="form-control" placeholder="Puntuacion de mesa"
+                    required #puntuacionMesa="ngModel" pattern="^([1-9]|10)" maxlength="2" />
+                  <div *ngIf="puntuacionMesa.invalid && (puntuacionMesa.dirty || puntuacionMesa.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="puntuacionMesa.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="puntuacionMesa.errors.pattern">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                    <div *ngIf="puntuacionMesa.errors.minlength">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>Puntuacion de Restaurante:</h5>
+                  <input type="text" name="puntuacionRestaurante" ngModel class="form-control" required
+                    placeholder="Puntuacion de Restaurante" #puntuacionRestaurante="ngModel" pattern="^([1-9]|10)"
+                    maxlength="2" />
+                  <div
+                    *ngIf="puntuacionRestaurante.invalid && (puntuacionRestaurante.dirty || puntuacionRestaurante.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="puntuacionRestaurante.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="puntuacionRestaurante.errors.pattern">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                    <div *ngIf="puntuacionRestaurante.errors.minlength">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>Puntuacion de mozo:</h5>
+                  <input type="text" name="puntuacionMozo" ngModel class="form-control" placeholder="Puntuacion de mozo"
+                    required pattern="^([1-9]|10)" maxlength="2" #puntuacionMozo="ngModel" />
+                  <div *ngIf="puntuacionMozo.invalid && (puntuacionMozo.dirty || puntuacionMozo.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="puntuacionMozo.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="puntuacionMozo.errors.pattern">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                    <div *ngIf="puntuacionMozo.errors.minlength">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>Puntuacion de cocinero:</h5>
+                  <input type="text" name="puntuacionCocinero" ngModel class="form-control" required
+                    placeholder="Puntuacion de cocinero" #puntuacionCocinero="ngModel" pattern="^([1-9]|10)"
+                    maxlength="2" />
+                  <div *ngIf="puntuacionCocinero.invalid && (puntuacionCocinero.dirty || puntuacionCocinero.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="puntuacionCocinero.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="puntuacionCocinero.errors.pattern">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                    <div *ngIf="puntuacionCocinero.errors.minlength">
+                      El puntaje solo debe incluir numeros del 1 al 10.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h5>Comentario:</h5>
+                  <input type="text" name="comentario" ngModel class="form-control" placeholder="Comentario adicional"
+                    required #comentario="ngModel" pattern="[0-9a-zA-Z .,]*" maxlength="67"/>
+                  <div *ngIf="comentario.invalid && (comentario.dirty || comentario.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="comentario.errors.required">
+                      Campo Requerido.
+                    </div>
+                    <div *ngIf="comentario.errors.pattern">
+                      El comentario solo debe contener letras comas o puntos y/o numeros .
+                    </div>
+                    <div *ngIf="comentario.errors.maxlength">
+                      El comentario puede tener hasta 66 caracteres.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="clearfix">
+                    <input [hidden]="!verSubmit" (click)="registrarEncuesta(EncuestaForm)" type="submit" name="LGform1"
+                      [disabled]="EncuestaForm.invalid" class="btnContactSubmit" value="Enviar encuesta" />
+                  </div>
+                  <h2 [hidden]="verSubmit">
+                    <p><i class="fas fa-cog fa-spin"></i>Verificando...</p>
+                  </h2>
+                  <h3 [hidden]="OK">Listo!</h3>
+                  <h3 [hidden]="ERROR">Hubo un error intente de nuevo</h3>
+                  <!--
+                    <h3 [hidden]="!perdio">Perdio!</h3> -->
+                  <h2 [hidden]="verSubmit">
+                    <h3>Espere por favor</h3>
+                  </h2>
+                </div>
+
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

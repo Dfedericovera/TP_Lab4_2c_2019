@@ -18,10 +18,13 @@
         cancelado</button></li>
     <li class="nav-item"><button class="btn btn-link" (click)="TraerFinalizados()" *ngIf="PerfilUsuario=='Socio'">Pedido
         finalizado</button></li>
+    <li *ngIf="PerfilUsuario=='Socio'">
+       <button (click)="generarPDF()" class="btn btn-danger" >Generar PDF</button></li>
+
   </ul>
 </nav>
-<!-- TABLA DE JUEGOS -->
-<table class="table table-dark">
+<!-- TABLA DE PEDIDOS -->
+<table class="table table-dark" id="empleadosTable">
   <thead>
     <tr>
       <th>Codigo</th>
@@ -50,8 +53,7 @@
       <td>{{pedido.descripcion}} </td>
       <td
         *ngIf="PerfilUsuario=='Socio' || PerfilUsuario=='Cocinero' || PerfilUsuario=='Bartender' || PerfilUsuario=='Cervecero' || PerfilUsuario=='CandyBar'">
-        <app-tomar-pedido [pedido]="pedido"
-        *ngIf="pedido.estado == 'Pendiente'" ></app-tomar-pedido>
+        <app-tomar-pedido [pedido]="pedido" *ngIf="pedido.estado == 'Pendiente'"></app-tomar-pedido>
       </td>
       <td
         *ngIf="PerfilUsuario=='Socio' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Cocinero' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Bartender' && pedido.estado == 'En Preparacion' || PerfilUsuario=='Cervecero' && pedido.estado == 'En Preparacion' || PerfilUsuario=='CandyBar' && pedido.estado == 'En Preparacion'">
@@ -64,5 +66,51 @@
       <td *ngIf="pedido.gano">Gano </td>
       <td *ngIf="!pedido.gano">Perdio</td> -->
     </tr>
+  </tbody>
+</table>
+
+
+
+
+<!-- TABLA DE PEDIDOS COMPLETO -->
+<table class="table table-dark" id="pedidosTable" style="display: none;">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Estado</th>
+      <th>Mesa</th>
+      <th>Descripcion</th>
+      <th>Sector</th>
+      <th>Cliente</th>
+      <th>Mozo</th>
+      <th>Horainicial</th>
+      <th>HoraEstimada</th>
+      <th>HoraReal</th>
+      <th>Fecha</th>
+      <th>Importe</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pedido of listado">
+
+      <td id="codigo">{{pedido.codigo}}&nbsp;
+        <i id="MyTooltip" style="cursor: pointer;" (click)="copiarCodigo()" class="far fa-copy" title="Copiar">
+        </i>
+      </td>
+      <td>{{pedido.estado}} </td>
+      <td>{{pedido.mesa}} </td>
+      <td>{{pedido.descripcion}} </td>
+      <!-- 
+      <td>{{pedido.id_menu}} </td> -->
+      <td>{{pedido.sector}} </td>
+      <td>{{pedido.nombre_cliente}} </td>
+      <td>{{pedido.nombre_mozo}} </td>
+      <!-- 
+      <td>{{pedido.id_mozo}} </td>
+      <td>{{pedido.id_encargado}} </td> -->
+      <td>{{pedido.hora_inicial}} </td>
+      <td>{{pedido.hora_entrega_estimada}} </td>
+      <td>{{pedido.hora_entrega_real}} </td>
+      <td>{{pedido.fecha}} </td>
+      <td>{{pedido.importe}} </td>
   </tbody>
 </table>

@@ -53,7 +53,7 @@
 }
 .register{
     background: -webkit-linear-gradient(left, #3931afbb, #00c8ffb0);
-    margin-top: auto;
+    margin-bottom: 10px;
     padding: 3%;
     border-radius: 2.5rem;
     position: relative;
@@ -71,3 +71,32 @@
 .descripcion{
     color: #f8f9fa;
 }
+
+
+input:disabled {
+    background: rgba(255, 255, 255, 0.363);
+    cursor: not-allowed;    
+  }
+
+  input:read-only{
+    cursor: default;
+  }
+  .container {
+    margin: 0;
+    position: relative;
+    top: 10vh;
+    left: 10vw;
+
+    /* 
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+  }
+  @media only screen and (max-width: 767px) {
+    .container {
+        margin: 0;
+        position: relative;
+        top: 10vh;
+        left: 0;
+    
+      }
+    }
