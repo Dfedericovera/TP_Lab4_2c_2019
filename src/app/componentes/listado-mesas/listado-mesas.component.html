@@ -25,9 +25,6 @@
       <th>Foto</th>
       <th>Cobrar</th>
       <th>Cerrar</th>
-      <!--    <th>Tomar pedido</th>
-      <th>Listo para Servir</th>
-      <th>Servir</th> -->
     </tr>
   </thead>
   <tbody>
@@ -44,38 +41,12 @@
       <td *ngIf="mesa.estado!='Cerrada'">
         <app-boton-cerrar-mesa [mesa]="mesa" (cerrar)="actualizarVista()"></app-boton-cerrar-mesa>
       </td>
-      <!-- <td> <app-tomar-pedido [pedido]="pedido"></app-tomar-pedido> </td>
-      <td> <app-listo-para-servir [pedido]="pedido"></app-listo-para-servir> </td>
-      <td> <app-servir [pedido]="pedido" ></app-servir> </td> -->
-      <!-- 
-      <td *ngIf="pedido.gano">Gano </td>
-      <td *ngIf="!pedido.gano">Perdio</td> -->
     </tr>
   </tbody>
 </table>
 
-<!-- TABLA DE MESAS PDF --><!-- style="display: none;" -->
-<!-- <table id="mesasTable" >
-  <thead>
-    <tr>
-      <th>Codigo</th>
-      <th>Estado</th>
-      <th>Foto</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let mesa of listado">
-      <td align="right">{{mesa.codigo}}</td>
-      <td>{{mesa.estado}}</td>
-      <td><img src="{{base64Image}}"></td>
-    </tr>
-  </tbody>
-</table> -->
-
-
-
-
-<table id="mytable" style="display: none;"><!--   -->
+<!-- TABLA DE MESAS PDF -->
+<table id="mytable" style="display: none;">
   <thead>
     <tr>
       <th>Codigo mesa</th>
@@ -84,7 +55,7 @@
     </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let mesa of listado" ><!--  -->
+      <tr *ngFor="let mesa of listado" >
           <td align="right">{{mesa.codigo}}</td>
           <td>{{mesa.estado}}</td>
           <td><img class='img'

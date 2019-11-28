@@ -36,6 +36,7 @@ import { TomarPedidoFormComponent } from './componentes/tomar-pedido-form/tomar-
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { EmpleadoPipe } from './pipes/empleado.pipe';
 import { ListadoEmpleadosComponent } from './componentes/listado-empleados/listado-empleados.component';
+import { ResaltarDirective } from './directivas/resaltar.directive';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ListadoEmpleadosComponent } from './componentes/listado-empleados/lista
     ClienteComponent,
     EmpleadoPipe,
     ListadoEmpleadosComponent,
+    ResaltarDirective,
   ],
   imports: [
     BrowserModule,

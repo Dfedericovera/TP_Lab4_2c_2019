@@ -19,7 +19,7 @@ export class ListadoEmpleadosComponent implements OnInit {
   }
 
   generarPDF() {
-    var doc = new jsPDF('landscape');
+    var doc = new jsPDF();/* Utilizar el parametro 'landscape' al generar el objeto jsPDF para que lo genere en horizontal */
     doc.setFontSize(2);
     doc.autoTable({
       head: [["id", "nombre", "tipo", "usuario", "fechaRegistro", "ultimoLogin", "estado", "cantidad_operaciones"]],
