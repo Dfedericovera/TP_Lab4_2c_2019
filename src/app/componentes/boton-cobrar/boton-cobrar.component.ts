@@ -32,7 +32,7 @@ export class BotonCobrarComponent implements OnInit {
       console.log(f.valid);  // false
       this.subirPelicula(f);
     } */
-    onSubmit(obj: FormData) {
+    onSubmit() {
     let url = '/mesas/cobrar/'+ this.mesa.codigo;
     this.miservicio.cobrar(url).toPromise().then(data=> this.cambiarMensajeModal(data)).catch(error => {
       console.log("error", error);

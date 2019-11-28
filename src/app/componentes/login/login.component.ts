@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MiHttpService } from '../../servicios/mi-http/mi-http.service';
 import { RecaptchaComponent } from 'ng-recaptcha';
-import { JugadoresService } from '../../servicios/jugadores.service';
+import { EmpleadoService } from '../../servicios/empleado.service';
 import { Usuario } from "../../clases/usuario";
 
 @Component({
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private mihttp: MiHttpService,
-    private jugadoresService: JugadoresService
+    private EmpleadoService: EmpleadoService
   ) {
     this.progreso = 0;
     this.ProgresoDeAncho = "0%";
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     console.log(this.clave.value); */
     this.usuario.usuario = this.correo.value;
     this.usuario.clave = this.clave.value;
-    this.jugadoresService.login("/empleados/login", this.usuario)
+    this.EmpleadoService.login("/empleados/login", this.usuario)
       .then(data => {
         if (data != null && recapchaResponse['success'] == true) {
           this.router.navigate(['']);

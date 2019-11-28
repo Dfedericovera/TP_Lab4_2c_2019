@@ -33,7 +33,7 @@ export class BotonCerrarMesaComponent implements OnInit {
       console.log(f.valid);  // false
       this.subirPelicula(f);
     } */
-    onSubmit(obj: FormData) {
+    onSubmit() {
     let url = '/mesas/estadoCerrada/'+ this.mesa.codigo;
     this.miservicio.cobrar(url).toPromise()
     .then(

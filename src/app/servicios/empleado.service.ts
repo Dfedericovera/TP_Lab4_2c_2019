@@ -9,7 +9,8 @@ import { AutService } from '../servicios/auth.service';
 export class EmpleadoService implements CanActivate {
   
 
-  api = "http://localhost/APACHE/PHP/LaComandaAPI";
+  /* api = "http://localhost/APACHE/PHP/LaComandaAPI"; */
+  api = "http://lacomandaapi.atwebpages.com";
   constructor(private miHttp:MiHttpService,private auth: AutService, private router: Router) { }
 
   filtrado:any;
@@ -120,6 +121,39 @@ export class EmpleadoService implements CanActivate {
         // this.router.navigate(['/pages/forms/inputs']);
         return !true;
       }
+}
+
+public registrar(ruta: string, objeto:any){
+
+  return this.miHttp.httpPostP(this.api + ruta , objeto)
+  .toPromise()
+  .then(data => {
+    //console.log("Usuario");
+    console.log( data );
+    if (data["Token"]) {
+      localStorage.setItem('token',data["Token"]);
+    }
+    return data;
+  }, err => {
+    console.log(err);
+  });
+
+}
+
+
+public login(ruta: string, objeto: any) {
+  return this.miHttp.httpPostP(this.api + ruta, objeto)
+  .toPromise()
+  .then(data => {
+    //console.log("Usuario");
+    console.log( data );
+    if (data["Token"]) {
+      localStorage.setItem('token',data["Token"]);
+    }
+    return data;
+  }, err => {
+    console.log(err);
+  })
 }
 
 

@@ -9,8 +9,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HttpModule } from '@angular/http';
 import { MiHttpService } from './servicios/mi-http/mi-http.service';
-import { JugadoresService } from './servicios/jugadores.service';
-import { ArchivosJugadoresService } from './servicios/archivos-jugadores.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings,RecaptchaLoaderService, RecaptchaComponent } from 'ng-recaptcha';
 import { PrincipalComponent } from './componentes/principal/principal.component';
@@ -75,8 +73,6 @@ import { ResaltarDirective } from './directivas/resaltar.directive';
   ],
   providers: [
     MiHttpService,
-    JugadoresService,
-    ArchivosJugadoresService,
     RecaptchaComponent,
     VerificarJWTService,
     AutService,

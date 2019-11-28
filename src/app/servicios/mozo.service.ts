@@ -9,7 +9,8 @@ import { AutService } from '../servicios/auth.service';
 })
 export class MozoService implements CanActivate {
 
-  api = "http://localhost/APACHE/PHP/LaComandaAPI";
+  /* api = "http://localhost/APACHE/PHP/LaComandaAPI"; */
+  api = "http://lacomandaapi.atwebpages.com";
   constructor(private miHttp: MiHttpService, private auth: AutService, private router: Router) { }
 
   cancelarPedido(url){

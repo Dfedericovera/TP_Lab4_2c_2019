@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Usuario } from '../../clases/usuario';
-import { JugadoresService } from '../../servicios/jugadores.service';
+import { EmpleadoService } from "../../servicios/empleado.service";
 import { FormGroup } from '@angular/forms';
 // para poder hacer las validaciones
 // import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
   jugador: Usuario;
   EstadoRegistro;
 
-  constructor(private router: Router, private jugadoresService: JugadoresService) {
+  constructor(private router: Router, private EmpleadoService: EmpleadoService) {
     this.jugador = new Usuario('', '', '');
   }
 
@@ -34,7 +34,7 @@ export class RegistroComponent implements OnInit {
   registrar(){
 
     console.log(this.jugador);
-    this.jugadoresService.registrar('/usuario/registrar', this.jugador)
+    this.EmpleadoService.registrar('/usuario/registrar', this.jugador)
     .then(data => {
 
       if (data['Estado'] == 'OK') {
@@ -43,7 +43,7 @@ export class RegistroComponent implements OnInit {
       }
       if (this.EstadoRegistro == 'OK'){
       console.log(this.EstadoRegistro);
-      this.jugadoresService.login('/usuario/login', this.jugador).then(data => {
+      this.EmpleadoService.login('/usuario/login', this.jugador).then(data => {
         this.router.navigate(['']);
       });
     }

@@ -12,7 +12,8 @@ export class SocioService {
 
   filtrado:any;
 
-  api = "http://localhost/APACHE/PHP/LaComandaAPI";
+  /* api = "http://localhost/APACHE/PHP/LaComandaAPI"; */
+  api = "http://lacomandaapi.atwebpages.com";
   constructor(private miHttp: MiHttpService, private auth: AutService, private router: Router) { }
   
   getBase64ImageFromURL(url: string) {
